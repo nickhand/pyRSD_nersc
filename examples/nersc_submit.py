@@ -1,9 +1,15 @@
 """
 An example script to show submit an rsdfit job script to NERSC.
 
->> python nersc_submit.py submit -n 32 -p debug -t 30 --dry-run
+This can be executed via:
+
+>>> python nersc_submit.py submit -n 32 -p debug -t 30 --dry-run
 
 Note: when actually submitting, remove the "--dry-run" flag.
+
+The help message for submitting jobs can be displayed using:
+
+>>> python nersc_submit.py submit -h
 """
 import os
 from pyRSD_nersc import BatchRSDFitDriver, NERSCManager
@@ -34,10 +40,9 @@ def main():
 
 if __name__ == '__main__':
 
-
     # initialize NERSC manager
     manager = NERSCManager(output_dir='job_output')
 
-    # run the jobs! (will only run from job script)
+    # run the job! (will only run from job script)
     if manager.on_compute_node():
         main()
