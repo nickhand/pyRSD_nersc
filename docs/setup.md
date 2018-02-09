@@ -2,7 +2,7 @@
 
 ## Environment Setup and Installation
 
-The bulk of the setup is performed by the [utils/install.sh](https://github.com/nickhand/pyRSD_nersc/blob/master/utils/install.sh) script. After logging into NERSC, users should download this script using
+The bulk of the setup is performed by the [utils/install.sh](../utils/install.sh) script. After logging into NERSC, users should download this script using
 
 ```bash
 wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/install.sh
@@ -45,6 +45,6 @@ bash $HOME/local-python/tar-anaconda.sh
 ```
 
 This will create the tar file: ``$HOME/local-python/pyrsd-anaconda.tar.gz``.
-It typically takes ~2-3 minutes to build the tar file. 
+It typically takes ~2-3 minutes to build the tar file.
 
 **Note: whenever the version of pyRSD is updated, users should re-run the above script to create a new tar file.**
