@@ -20,7 +20,7 @@ This script performs the following steps:
 - Downloads and installs a fresh Anaconda environment to the directory ``
 ``$HOME/local-python/anaconda3``
 - Activates the new conda environment and installs ``pyRSD`` and ``pyRSD_nersc``
-- Downloads the script ``tar-anaconda.sh`` to ``$HOME/local-python`` (see the section on bundling pyRSD)
+- Downloads the script [tar-anaconda.sh](../utils/tar-anaconda.sh) to the ``$HOME/local-python`` directory (see the section on bundling pyRSD)
 
 ## Updating pyRSD
 
