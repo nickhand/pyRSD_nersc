@@ -2,7 +2,7 @@
 An example script to show how to iterate through a set of rsdfit "nlopt"
 commands.
 
-As an exmplae, this can be executed from the command line:
+As an example, this can be executed from the command line:
 
 >> mpirun -n 4 python run_rsdfit.py
 """
