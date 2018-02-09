@@ -119,4 +119,6 @@ mpirun -n 4 python run_batch_rsdfit.py
 ```
 
 With 4 total processes and 3 total fits (``box=[1, 2, 3]``), the fits will
-be run in parallel. 
+be run in parallel. When finished, the results will be saved to
+the following directories: ``results_box-1``, ``results_box-2``, and
+``results_box-3``.

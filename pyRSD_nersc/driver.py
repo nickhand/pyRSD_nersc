@@ -69,7 +69,6 @@ class RSDFitDriver(object):
             args += ['--nchains', str(self.nchains)]
 
         # parse the args passed to rsdfit
-        print(args)
         args = rsdfit_parser().parse_args(args)
         args = vars(args)
 
@@ -94,7 +93,7 @@ class BatchRSDFitDriver(object):
     model_file : str
         the name of an existing model file to load and pass to ``rsdfit``
     base_output : str
-        the base name of the results directory; for each iteration, the 
+        the base name of the results directory; for each iteration, the
         results name will be the concatenation of this base name and the
         key/value pairs being iterated over
     iterations : int
