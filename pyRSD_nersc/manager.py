@@ -130,6 +130,9 @@ class NERSCManager(object):
 
             # install NERSC specific environment
             bcast /usr/common/contrib/bccp/anaconda3/envs/bcast-anaconda-3.6.tar.gz
+
+            # install latest pyRSD_nersc
+            bcast-pip git+git://github.com/nickhand/pyRSD_nersc.git
             """
         return textwrap.dedent(s)
 

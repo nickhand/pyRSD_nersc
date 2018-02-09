@@ -1,34 +1,25 @@
 #!/bin/bash
 
-python_dir=$HOME/local-python
+build_dir=$HOME/pyrsd-build
 
 # create the directory, if it does not exist
-if [[ ! -d "${python_dir}" ]]
+if [[ ! -d "${build_dir}" ]]
 then
-  mkdir $python_dir
+  mkdir $build_dir
 fi
 
 # cd to the directory
-cd $python_dir
+cd $build_dir
 
-# download and install miniconda (if we need to)
-if [[ ! -d "anaconda3" ]]
-then
-  # download
-  wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+# download tar scripts
+wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-pyRSD.sh
+wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-pyRSD-deps.sh
 
-  # install Miniconda
-  bash Miniconda3-latest-Linux-x86_64.sh -p anaconda3 -b -f
-fi
+# load python
+module load python/3.6-anaconda-4.4
 
-# download tar-anaconda.sh
-wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-anaconda.sh
+# tar pyrsd
+bash tar-pyRSD.sh
 
-# activate the new environment
-source anaconda3/bin/activate root
-
-# install pyrsd
-conda install --yes -c nickhand pyrsd
-
-# install pyRSD_nersc
-pip install git+git://github.com/nickhand/pyRSD_nersc.git
+# tar pyrsd dependencies
+bash tar-pyRSD-deps.sh
