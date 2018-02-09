@@ -31,3 +31,4 @@ source anaconda3/bin/activate root
 conda install --yes -c nickhand pyrsd
 
 # install pyRSD_nersc
+pip install git+git://github.com/nickhand/pyRSD_nersc.git
