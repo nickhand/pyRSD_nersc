@@ -6,7 +6,7 @@ conda_dir=$HOME/local-python/anaconda3
 # the output filename
 fname=pyrsd-anaconda.tar.gz
 
-OUTPUT=`readlink -f $conda_dir/envs/$fname`
+OUTPUT=`readlink -f $HOME/local-python/$fname`
 (
 cd $conda_dir
 list=

@@ -21,6 +21,9 @@ then
   bash Miniconda3-latest-Linux-x86_64.sh -p anaconda3 -b -f
 fi
 
+# download tar-anaconda.sh
+wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-anaconda.sh
+
 # activate the new environment
 source anaconda3/bin/activate root
 

@@ -126,7 +126,7 @@ class NERSCManager(object):
             source /usr/common/contrib/bccp/conda-activate.sh 3.6
 
             # install pyRSD
-            bcast $HOME/local-python/anaconda3/envs/pyrsd-anaconda.tar.gz
+            bcast $HOME/local-python/pyrsd-anaconda.tar.gz
             """
         return textwrap.dedent(s)
 
