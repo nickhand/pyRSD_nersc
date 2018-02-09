@@ -73,6 +73,8 @@ source /usr/common/contrib/bccp/conda-activate.sh 3.6
 # install pyRSD
 bcast $HOME/local-python/pyrsd-anaconda.tar.gz
 
+# install NERSC specific environment
+bcast /usr/common/contrib/bccp/anaconda3/envs/bcast-anaconda-3.6.tar.gz
 
 # change to the correct directory
 cd /Users/nhand/Research/Programs/pyRSD_nersc/examples

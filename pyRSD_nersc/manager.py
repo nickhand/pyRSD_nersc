@@ -127,6 +127,9 @@ class NERSCManager(object):
 
             # install pyRSD
             bcast $HOME/local-python/pyrsd-anaconda.tar.gz
+
+            # install NERSC specific environment
+            bcast /usr/common/contrib/bccp/anaconda3/envs/bcast-anaconda-3.6.tar.gz
             """
         return textwrap.dedent(s)
 
