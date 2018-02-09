@@ -12,5 +12,5 @@ setup(
     package_data = {'pyRSD_nersc': package_data},
     packages=find_packages(),
     description="Utilities for running pyRSD on NERSC",
-    install_requires=['pyRSD']
+    install_requires=['pyRSD', 'jinja2']
 )

@@ -4,7 +4,7 @@ commands.
 
 As an exmplae, this can be executed from the command line:
 
->> mpirun -n 4 python run_rsdfit.py
+>> mpirun -n 4 python run_batch_rsdfit.py
 """
 from pyRSD_nersc import BatchRSDFitDriver
 

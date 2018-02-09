@@ -81,10 +81,24 @@ class RSDFitDriver(object):
 class BatchRSDFitDriver(object):
     """
     A driver class to iterate through a set of ``rsdfit`` commands.
-    Given a set of
 
     .. note::
         This only runs ``rsdfit`` in "nlopt" mode (not "mcmc") mode.
+
+    Parameters
+    ----------
+    param_template : str
+        the name of an existing template parameter file; this file should
+        use jinja syntax (i.e., ``{{ key }}``) to specify the keys that
+        will be updated for each iteration
+    model_file : str
+        the name of an existing model file to load and pass to ``rsdfit``
+    base_output : str
+        the base name of the results directory; for each iteration, the 
+        results name will be the concatenation of this base name and the
+        key/value pairs being iterated over
+    iterations : int
+        the number of iterations to run for each fit
     """
     def __init__(self, param_template, model_file, base_output, iterations):
 
@@ -170,7 +184,7 @@ class BatchRSDFitDriver(object):
             from nbodykit.lab import TaskManager
         except:
             raise ImportError("please install nbodykit!")
-            
+
         if isinstance(keys, six.string_types):
             keys = [keys]
 
