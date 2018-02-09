@@ -1,0 +1,96 @@
+#-------------------------------------------------------------------------------
+# driver_params
+#-------------------------------------------------------------------------------
+driver.burnin = 0
+driver.epsilon = 0.02
+driver.init_from = 'fiducial'
+driver.init_scatter = 0.0
+driver.lbfgs_epsilon = {'f1h_cBs': 0.01, 'Nsat_mult': 0.01}
+driver.lbfgs_options = {'factr': 100000.0}
+driver.lbfgs_use_priors = True
+driver.start_from = None
+driver.test_convergence = False
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# data params
+#-------------------------------------------------------------------------------
+data.covariance = 'poles_gaussian_covariance.dat'
+data.covariance_Nmocks = 0
+data.covariance_rescaling = 84.0
+data.data_file = 'box1/poles.dat'
+data.ells = [0, 2, 4, 6]
+data.fitting_range = [(0.02, 0.4), (0.02, 0.4), (0.02, 0.4)]
+data.grid_file = None
+data.mode = 'poles'
+data.mu_bounds = None
+data.rescale_inverse_covariance = False
+data.statistics = ['pole_0', 'pole_2', 'pole_4', 'pole_6']
+data.usedata = [0, 1, 2]
+data.window_file = 'box1/window.dat'
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# theory params
+#-------------------------------------------------------------------------------
+theory.F_AP = {'name': 'F_AP', 'value': 1.0, 'expr': 'alpha_par/alpha_perp', 'analytic': False, 'vary': False}
+theory.N = {'prior_name': 'uniform', 'name': 'N', 'value': 0, 'fiducial': 0.0, 'analytic': False, 'min': 0, 'vary': False, 'lower': 0, 'upper': 500.0}
+theory.NcBs = {'name': 'NcBs', 'value': 30019.684740166012, 'fiducial': 45000.0, 'expr': 'f1h_cBs / (fcB*(1 - fs)*nbar)', 'analytic': False, 'vary': False}
+theory.NsBsB = {'name': 'NsBsB', 'value': 95896.21514219703, 'fiducial': 94500.0, 'expr': 'f1h_sBsB / (fsB**2 * fs**2 * nbar) * (fcB*(1 - fs) - fs*(1-fsB))', 'analytic': False, 'vary': False}
+theory.Nsat_mult = {'prior_name': 'normal', 'name': 'Nsat_mult', 'value': 2.4, 'mu': 2.4, 'fiducial': 2.4, 'analytic': False, 'min': 2.0, 'vary': True, 'sigma': 0.2}
+theory.alpha = {'name': 'alpha', 'value': 1.0, 'expr': '(alpha_perp**2 * alpha_par)**(1./3)', 'analytic': False, 'vary': False}
+theory.alpha_drag = {'name': 'alpha_drag', 'value': 1.0, 'fiducial': 1.0, 'analytic': False, 'vary': False}
+theory.alpha_par = {'prior_name': 'uniform', 'name': 'alpha_par', 'value': 1.0, 'fiducial': 1.0, 'analytic': False, 'vary': True, 'lower': 0.8, 'upper': 1.2}
+theory.alpha_perp = {'prior_name': 'uniform', 'name': 'alpha_perp', 'value': 1.0, 'fiducial': 1.0, 'analytic': False, 'vary': True, 'lower': 0.8, 'upper': 1.2}
+theory.b1 = {'name': 'b1', 'value': 2.124276, 'expr': '(1 - fs)*b1_c + fs*b1_s', 'analytic': False, 'vary': False}
+theory.b1_c = {'name': 'b1_c', 'value': 1.9981383928571428, 'expr': '(1 - fcB)*b1_cA + fcB*b1_cB', 'analytic': False, 'vary': False}
+theory.b1_cA = {'prior_name': 'uniform', 'name': 'b1_cA', 'value': 1.9, 'fiducial': 1.9, 'analytic': False, 'vary': True, 'lower': 1.2, 'upper': 2.5}
+theory.b1_cB = {'name': 'b1_cB', 'value': 3.0028260869565218, 'fiducial': 2.84, 'expr': '(1-fsB)/(1+fsB*(1./Nsat_mult - 1)) * b1_sA +  (1 - (1-fsB)/(1+fsB*(1./Nsat_mult - 1))) * b1_sB', 'analytic': False, 'vary': False}
+theory.b1_s = {'name': 'b1_s', 'value': 3.2109999999999994, 'expr': '(1 - fsB)*b1_sA + fsB*b1_sB', 'analytic': False, 'vary': False}
+theory.b1_sA = {'name': 'b1_sA', 'value': 2.755, 'fiducial': 2.63, 'expr': 'gamma_b1sA*b1_cA', 'analytic': False, 'vary': False}
+theory.b1_sB = {'name': 'b1_sB', 'value': 3.8949999999999996, 'fiducial': 3.62, 'expr': 'gamma_b1sB*b1_cA', 'analytic': False, 'vary': False}
+theory.b1sigma8 = {'name': 'b1sigma8', 'value': 1.29580836, 'expr': 'b1*sigma8_z', 'analytic': False, 'vary': False}
+theory.epsilon = {'name': 'epsilon', 'value': 0.0, 'expr': '(alpha_perp/alpha_par)**(-1./3) - 1.0', 'analytic': False, 'vary': False}
+theory.f = {'prior_name': 'uniform', 'name': 'f', 'value': 0.78, 'fiducial': 0.78, 'analytic': False, 'vary': True, 'lower': 0.6, 'upper': 1.0}
+theory.f1h_cBs = {'prior_name': 'normal', 'name': 'f1h_cBs', 'value': 1.0, 'mu': 1.0, 'fiducial': 1.0, 'analytic': False, 'min': 0, 'vary': False, 'sigma': 0.75}
+theory.f1h_sBsB = {'prior_name': 'normal', 'name': 'f1h_sBsB', 'value': 4.0, 'mu': 4.0, 'fiducial': 4.0, 'analytic': False, 'min': 0.0, 'vary': True, 'sigma': 1.0}
+theory.f_so = {'prior_name': 'normal', 'name': 'f_so', 'value': 0.0, 'mu': 0.04, 'fiducial': 0.0, 'analytic': False, 'vary': False, 'sigma': 0.02}
+theory.fcB = {'name': 'fcB', 'value': 0.08898809523809524, 'fiducial': 0.089, 'expr': 'fs / (1 - fs) * (1 + fsB*(1./Nsat_mult - 1))', 'analytic': False, 'min': 0, 'vary': False, 'max': 1}
+theory.fs = {'prior_name': 'uniform', 'name': 'fs', 'value': 0.104, 'fiducial': 0.104, 'analytic': False, 'min': 0.0, 'vary': True, 'lower': 0.0, 'upper': 0.25, 'max': 1.0}
+theory.fsB = {'prior_name': 'uniform', 'name': 'fsB', 'value': 0.4, 'fiducial': 0.4, 'analytic': False, 'min': 0.0, 'vary': True, 'lower': 0.0, 'upper': 1.0, 'max': 1}
+theory.fsigma8 = {'name': 'fsigma8', 'value': 0.4758, 'expr': 'f*sigma8_z', 'analytic': False, 'vary': False}
+theory.gamma_b1cB = {'prior_name': 'normal', 'name': 'gamma_b1cB', 'value': 0.4, 'mu': 0.4, 'fiducial': 0.4, 'analytic': False, 'min': 0.0, 'vary': False, 'sigma': 0.2, 'max': 1.0}
+theory.gamma_b1sA = {'prior_name': 'normal', 'name': 'gamma_b1sA', 'value': 1.45, 'mu': 1.45, 'fiducial': 1.45, 'analytic': False, 'min': 1.0, 'vary': True, 'sigma': 0.3}
+theory.gamma_b1sB = {'prior_name': 'normal', 'name': 'gamma_b1sB', 'value': 2.05, 'mu': 2.05, 'fiducial': 2.05, 'analytic': False, 'min': 1.0, 'vary': True, 'sigma': 0.3}
+theory.nbar = {'name': 'nbar', 'value': 0.0004177860669964361, 'fiducial': 0.0004177860669964361, 'analytic': False, 'vary': False}
+theory.sigma8_z = {'prior_name': 'uniform', 'name': 'sigma8_z', 'value': 0.61, 'fiducial': 0.61, 'analytic': False, 'vary': True, 'lower': 0.3, 'upper': 0.9}
+theory.sigma_c = {'prior_name': 'uniform', 'name': 'sigma_c', 'value': 1.0, 'fiducial': 1.0, 'analytic': False, 'vary': True, 'lower': 0.0, 'upper': 3.0}
+theory.sigma_sA = {'prior_name': 'uniform', 'name': 'sigma_sA', 'value': 3.5, 'fiducial': 3.5, 'analytic': False, 'vary': True, 'lower': 2.0, 'upper': 8.0}
+theory.sigma_sB = {'prior_name': 'uniform', 'name': 'sigma_sB', 'value': 4.7189565156181148, 'fiducial': 5.0, 'expr': 'sigma_sA * sigmav_from_bias(sigma8_z, b1_sB) / sigmav_from_bias(sigma8_z, b1_sA)', 'analytic': False, 'vary': False, 'lower': 3.0, 'upper': 10.0}
+theory.sigma_so = {'prior_name': 'uniform', 'name': 'sigma_so', 'value': 0.0, 'fiducial': 0.0, 'analytic': False, 'vary': False, 'lower': 1.0, 'upper': 7}
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# model params
+#-------------------------------------------------------------------------------
+model.Pdv_model_type = 'jennings'
+model.correct_mu2 = False
+model.correct_mu4 = False
+model.cosmo_filename = {'H0':70., 'Ob0':0.047, 'Om0':0.286, 'flat':True, 'sigma8':0.82, 'n_s':0.96}
+model.fog_model = 'modified_lorentzian'
+model.include_2loop = False
+model.interpolate = True
+model.max_mu = 4
+model.transfer_fit = 'CLASS'
+model.use_P00_model = True
+model.use_P01_model = True
+model.use_P11_model = True
+model.use_Pdv_model = True
+model.use_Phm_model = True
+model.use_mean_bias = False
+model.use_so_correction = False
+model.use_tidal_bias = False
+model.use_vlah_biasing = True
+model.vel_disp_from_sims = False
+model.z = 0.5
+#-------------------------------------------------------------------------------

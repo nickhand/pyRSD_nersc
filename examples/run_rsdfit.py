@@ -6,28 +6,31 @@ As an exmplae, this can be executed from the command line:
 
 >> mpirun -n 4 python run_rsdfit.py
 """
-import sys
-sys.path.insert(0, '..')
-from driver import BatchRSDFitDriver
+from pyRSD_nersc import RSDFitDriver
 
+def main():
 
-if __name__ == '__main__':
-
-    # the template parameter file
-    template = 'params.template'
+    # the parameter file
+    params = 'params.dat'
 
     # the name of the model to load
     model_file = 'model.npy'
 
-    # the base output directory
-    # results will be saved to results_box-1, results_box-2, etc..
+    # the output directory
     output = 'results'
 
     # number of iterations to run
     iterations = 10
 
-    # initialize the batch driver
-    d = BatchRSDFitDriver(template, model_file, output, iterations)
+    # run in mcmc mode (can also do nlopt here)
+    mode = 'mcmc'
 
-    # run 3 rsdfit tasks, updating the "box" value in the template file
-    d.run('box', [1, 2, 3])
+    # initialize the driver
+    d = RSDFitDriver(mode, params, model_file, output, iterations, walkers=30)
+
+    # run 10 MCMC iterations
+    d.run()
+
+
+if __name__ == '__main__':
+    main()
