@@ -122,20 +122,13 @@ class NERSCManager(object):
         The default loading preamble to use in the job script.
         """
         s = """
-            # activate environment
+            # activate default environment
             source /usr/common/contrib/bccp/conda-activate.sh 3.6
 
-            # install pyRSD
-            bcast $HOME/local-python/pyrsd-anaconda.tar.gz
-
-            # install NERSC specific environment
-            bcast /usr/common/contrib/bccp/anaconda3/envs/bcast-anaconda-3.6.tar.gz
-
-            # install latest pyRSD_nersc
-            bcast-pip git+git://github.com/nickhand/pyRSD_nersc.git
+            # install pyRSD and dependencies
+            bcast $HOME/pyrsd-build/$NERSC_HOST/pyRSD*
             """
         return textwrap.dedent(s)
-
 
     @property
     def job_template(self):

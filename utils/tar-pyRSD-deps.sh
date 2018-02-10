@@ -17,5 +17,8 @@ then
   mkdir $NERSC_HOST
 fi
 
+# needed to build george
+pip install pybind11 --user
+
 fname=$NERSC_HOST/pyRSD-deps.tar.gz
-/usr/common/contrib/bccp/python-mpi-bcast/tar-pip.sh $fname -v emcee autograd lmfit george
+/usr/common/contrib/bccp/python-mpi-bcast/tar-pip.sh $fname -v emcee autograd lmfit pybind11 george
