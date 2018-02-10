@@ -20,5 +20,6 @@ fi
 # needed to build george
 pip install pybind11 --user
 
+# tar pyRSD dependencies
 fname=$NERSC_HOST/pyRSD-deps.tar.gz
 /usr/common/contrib/bccp/python-mpi-bcast/tar-pip.sh $fname -v emcee autograd lmfit pybind11 george

@@ -127,6 +127,9 @@ class NERSCManager(object):
 
             # install pyRSD and dependencies
             bcast $HOME/pyrsd-build/$NERSC_HOST/pyRSD*
+
+            # install pyRSD_nersc
+            bcast-pip git+git://github.com/nickhand/pyRSD_nersc.git
             """
         return textwrap.dedent(s)
 
