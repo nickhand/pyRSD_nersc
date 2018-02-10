@@ -34,7 +34,7 @@ if [[ ! -d "anaconda3/envs/pyrsd-anaconda-3.6" ]]
 then
   conda env create --name pyrsd-anaconda-3.6 -f environment.yml
 fi
-source activate pyrsd-anaconda-3.6
+source anaconda3/bin/activate pyrsd-anaconda-3.6
 
 # install pyRSD_nersc
 pip install --no-deps -I git+git://github.com/nickhand/pyRSD_nersc.git
