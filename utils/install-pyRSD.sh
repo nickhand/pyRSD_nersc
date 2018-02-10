@@ -18,8 +18,8 @@ then
 fi
 
 # load fftw
+module unload fftw || true
 module load fftw/3.3.4.6
 
 # tar pyRSD
-fname=$NERSC_HOST/pyRSD.tar.gz
-CFLAGS=-fPIC /usr/common/contrib/bccp/python-mpi-bcast/tar-pip.sh $fname --global-option=build_ext --global-option="-I$FFTW_INC" pyRSD
+CFLAGS=-fPIC pip install -I --no-deps --global-option=build_ext --global-option="-I$FFTW_INC" pyRSD

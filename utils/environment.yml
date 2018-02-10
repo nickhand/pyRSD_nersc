@@ -1,0 +1,20 @@
+name: pyrsd-env
+
+channels:
+- defaults
+- nickhand
+- astropy
+- conda-forge
+
+dependencies:
+- python=3.6
+- numpy
+- pandas
+- scipy
+- george
+- scikit-learn >=0.17
+- emcee
+- lmfit >=0.9
+- autograd
+- xarray
+- pybind11

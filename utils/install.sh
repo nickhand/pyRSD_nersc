@@ -11,18 +11,32 @@ fi
 # cd to the directory
 cd $build_dir
 
-# download tar scripts
-wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-pyRSD.sh
-wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-pyRSD-deps.sh
+# download and install miniconda (if we need to)
+if [[ ! -d "anaconda3" ]]
+then
+  # download
+  wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-# load python
-module load python/3.6-anaconda-4.4
+  # install Miniconda
+  bash Miniconda3-latest-Linux-x86_64.sh -p anaconda3 -b -f
+fi
 
-# install pyRSD_nersc locally
-pip install --no-deps git+git://github.com/nickhand/pyRSD_nersc.git --user
+# download scripts
+wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-anaconda.sh
+wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/install-pyRSD.sh
+wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/environment.yml
 
-# tar pyrsd
-bash tar-pyRSD.sh
+# activate the new environment
+source anaconda3/bin/activate root
 
-# tar pyrsd dependencies
-bash tar-pyRSD-deps.sh
+# install pyRSD dependencies
+conda env create --name pyrsd-anaconda-3.6 -f environment.yml
+
+# install pyRSD_nersc
+pip install git+git://github.com/nickhand/pyRSD_nersc.git
+
+# install
+bash install-pyRSD.sh
+
+# tar anaconda
+bash tar-anaconda.sh
