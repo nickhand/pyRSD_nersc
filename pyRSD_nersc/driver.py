@@ -1,5 +1,4 @@
 import os
-from mpi4py import MPI
 from jinja2 import Environment, PackageLoader, meta, FileSystemLoader
 import tempfile
 import six
@@ -49,8 +48,6 @@ class RSDFitDriver(object):
         self.nchains = nchains
 
         # determine the communicator
-        if comm is None:
-            comm = MPI.COMM_WORLD
         self.comm = comm
 
     def run(self):
@@ -59,6 +56,10 @@ class RSDFitDriver(object):
         """
         from pyRSD.rsdfit.util import rsdfit_parser
         from pyRSD.rsdfit import rsdfit
+        from mpi4py import MPI
+
+        # the MPI comm
+        comm = MPI.COMM_WORLD if self.comm is None else self.comm
 
         # build the rsdfit argument list
         args = [self.mode, '-p', self.param_file, '-m', self.model_file]
@@ -74,7 +75,7 @@ class RSDFitDriver(object):
 
         # initialize and run the RSDFit driver
         mode = args.pop('subparser_name')
-        driver = rsdfit.RSDFitDriver(self.comm, mode, **args)
+        driver = rsdfit.RSDFitDriver(comm, mode, **args)
         driver.run()
 
 class BatchRSDFitDriver(object):
