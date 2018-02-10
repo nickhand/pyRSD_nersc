@@ -16,35 +16,37 @@ bash install.sh
 
 This script performs the following steps:
 
-- Creates a new directory: ``$HOME/local-python``
-- Downloads and installs a fresh Anaconda environment to the directory ``
-``$HOME/local-python/anaconda3``
+- Creates a new directory: ``$HOME/pyrsd-build``
+- Downloads and installs a fresh Anaconda environment to the directory
+``$HOME/pyrsd-build/anaconda3``
 - Activates the new conda environment and installs ``pyRSD`` and ``pyRSD_nersc``
-- Downloads the script [tar-anaconda.sh](../utils/tar-anaconda.sh) to the ``$HOME/local-python`` directory (see the section on bundling pyRSD)
+- Downloads the script [tar-anaconda.sh](../utils/tar-anaconda.sh) to the ``$HOME/pyrsd-build`` directory (see the section on bundling pyRSD)
 
 ## Updating pyRSD
 
 When the version of pyRSD is updated, users can update their version using
 
 ```bash
-# activate the conda environment
-source $HOME/local-python/anaconda3/bin/activate root
-
-# update pyRSD
-conda update -c nickhand pyRSD
+# re-install a fresh pyRSD with the latest version
+bash $HOME/pyrsd-build/install-pyRSD.sh
 ```
 
 ## Bundling pyRSD
 
-To efficiently use pyRSD on the computing nodes, we need to bundle pyRSD and its dependencies into a tar file that will be loaded in the job script. The loading mechanism uses ``python-mpi-bcast`` and is similar to how ``nbodykit`` is loaded in job scripts.
+To efficiently use pyRSD on the computing nodes, we need to bundle pyRSD and
+its dependencies into a tar file that will be loaded in the job script. The
+loading mechanism uses ``python-mpi-bcast`` and is similar to how ``nbodykit``
+is loaded in job scripts.
 
 To create the tar file, users should execute the following command:
 
 ```bash
-bash $HOME/local-python/tar-anaconda.sh
+bash $HOME/pyrsd-build/tar-anaconda.sh
 ```
 
-This will create the tar file: ``$HOME/local-python/pyrsd-anaconda.tar.gz``.
+This will create the tar file:
+``$HOME/pyrsd-build/anaconda3/envs/pyrsd-anaconda-3.6.tar.gz``.
 It typically takes ~2-3 minutes to build the tar file.
 
-**Note: whenever the version of pyRSD is updated, users should re-run the above script to create a new tar file.**
+**Note: whenever the version of pyRSD is updated, users should re-run the
+above script to create a new tar file.**
