@@ -22,4 +22,4 @@ pip install pybind11 --user
 
 # tar pyRSD dependencies
 fname=$NERSC_HOST/pyRSD-deps.tar.gz
-/usr/common/contrib/bccp/python-mpi-bcast/tar-pip.sh $fname -v emcee autograd lmfit xarray pybind11 george
+/usr/common/contrib/bccp/python-mpi-bcast/tar-pip.sh $fname -v scikit-learn emcee autograd lmfit xarray pybind11 george
