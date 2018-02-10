@@ -3,37 +3,27 @@
 build_dir=$HOME/pyrsd-build
 
 # create the directory, if it does not exist
-if [[ ! -d "${build_dir}" ]]
-then
-  mkdir $build_dir
-fi
+[ -d "${build_dir}" ] || mkdir $build_dir
 
 # cd to the directory
 cd $build_dir
 
 # download and install miniconda (if we need to)
-if [[ ! -d "anaconda3" ]]
-then
-  # download
-  wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+[ -f "Miniconda3-latest-Linux-x86_64.sh" ] || wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-  # install Miniconda
-  bash Miniconda3-latest-Linux-x86_64.sh -p anaconda3 -b -f
-fi
+# install
+[ -d "anaconda3" ] || bash Miniconda3-latest-Linux-x86_64.sh -p anaconda3 -b -f
 
 # download scripts
-wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-anaconda.sh
-wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/install-pyRSD.sh
-wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/environment.yml
+[ -f "tar-anaconda.sh" ] || wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/tar-anaconda.sh
+[ -f "install-pyRSD.sh" ] || wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/install-pyRSD.sh
+[ -f "environment.yml" ] || wget https://raw.githubusercontent.com/nickhand/pyRSD_nersc/master/utils/environment.yml
 
 # activate the new environment
 source anaconda3/bin/activate root
+[ -d "anaconda3/envs/pyrsd-anaconda-3.6" ] || conda env create --name pyrsd-anaconda-3.6 -f environment.yml
 
-# install pyRSD dependencies into new environment
-if [[ ! -d "anaconda3/envs/pyrsd-anaconda-3.6" ]]
-then
-  conda env create --name pyrsd-anaconda-3.6 -f environment.yml
-fi
+# activate new environment
 source anaconda3/bin/activate pyrsd-anaconda-3.6
 
 # install pyRSD_nersc
