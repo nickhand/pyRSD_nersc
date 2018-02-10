@@ -18,3 +18,4 @@ dependencies:
 - autograd
 - xarray
 - pybind11
+- jinja2

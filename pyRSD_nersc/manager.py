@@ -126,7 +126,7 @@ class NERSCManager(object):
             source /usr/common/contrib/bccp/conda-activate.sh 3.6
 
             # install pyRSD and dependencies
-            bcast $HOME/pyrsd-build/$NERSC_HOST/pyRSD*
+            bcast $HOME/pyrsd-build/anaconda3/pyrsd-anaconda-3.6.tar.gz
 
             # install pyRSD_nersc
             bcast-pip git+git://github.com/nickhand/pyRSD_nersc.git
