@@ -18,7 +18,7 @@ then
 fi
 
 # load fftw
-module load fftw
+module load fftw/3.3.4.6
 
 # tar pyRSD
 fname=$NERSC_HOST/pyRSD.tar.gz
